@@ -160,8 +160,9 @@ ModelImporter:
     400150: Weapon
     400152: Weapon_break
     4300000: Model
-    7400000: Take 001
+    7400000: NidaleeIdle
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Model
   materials:
     importMaterials: 1
@@ -182,11 +183,191 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: NidaleeIdle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Buffbone_Glb_Channel_Loc
+        weight: 1
+      - path: Buffbone_Glb_Ground_Loc
+        weight: 1
+      - path: C_Buffbone_Glb_Center_Loc
+        weight: 1
+      - path: C_Buffbone_Glb_Layout_Loc
+        weight: 1
+      - path: C_Buffbone_Glb_Overhead_Loc
+        weight: 1
+      - path: Model
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/B_Cloth1
+        weight: 1
+      - path: Root/B_Cloth1/B_Cloth2
+        weight: 1
+      - path: Root/B_Cloth1/B_Cloth2/B_Cloth3
+        weight: 1
+      - path: Root/F_Cloth1
+        weight: 1
+      - path: Root/F_Cloth1/F_Cloth2
+        weight: 1
+      - path: Root/F_Cloth1/F_Cloth2/F_Cloth3
+        weight: 1
+      - path: Root/F_Cloth1/F_Cloth2/F_Cloth3/F_Cloth4
+        weight: 1
+      - path: Root/L_Hip
+        weight: 1
+      - path: Root/L_Hip/L_Knee
+        weight: 1
+      - path: Root/L_Hip/L_Knee/L_Buffbone_Glb_Foot_Loc
+        weight: 1
+      - path: Root/L_Hip/L_Knee/L_Foot
+        weight: 1
+      - path: Root/L_Hip/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Root/R_Hip
+        weight: 1
+      - path: Root/R_Hip/R_Knee
+        weight: 1
+      - path: Root/R_Hip/R_Knee/R_Buffbone_Glb_Foot_Loc
+        weight: 1
+      - path: Root/R_Hip/R_Knee/R_Foot
+        weight: 1
+      - path: Root/R_Hip/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Root/Spine1
+        weight: 1
+      - path: Root/Spine1/Spine2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/C_Buffbone_Glb_Chest_Loc
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Arm_Twist
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Buffbone_Glb_Hand_Loc
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Index1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Index1/L_Index2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Middle1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Middle1/L_Middle2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Pinky1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Pinky1/L_Pinky2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Ring1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Ring1/L_Ring2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Thumb1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Thumb1/L_Thumb2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/C_Buffbone_Glb_Head_Loc
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Hair1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Hair1/Hair2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Hair1/Hair2/Hair3
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Hair1/Hair2/Hair3/Hair4
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Hair1/Hair2/Hair3/Hair4/Hair5
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Hair1/Hair2/Hair3/Hair4/Hair5/Hair6
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/Jaw
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/L_Earring
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/Neck/Head/R_Earring
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Arm_Twist
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Buffbone_Glb_Hand_Loc
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Index1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Index1/R_Index2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Middle1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Middle1/R_Middle2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Parenting_Hand_Loc
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Pinky1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Pinky1/R_Pinky2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Ring1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Ring1/R_Ring2
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Thumb1
+        weight: 1
+      - path: Root/Spine1/Spine2/Spine3/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Thumb1/R_Thumb2
+        weight: 1
+      - path: Root/Weapon
+        weight: 1
+      - path: Root/Weapon/Buffbone_Glb_Weapon_1
+        weight: 1
+      - path: Root/Weapon/Weapon_break
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -221,7 +402,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
