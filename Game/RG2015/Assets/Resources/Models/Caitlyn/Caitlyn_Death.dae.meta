@@ -172,8 +172,9 @@ ModelImporter:
     400162: Weapon_barrel
     400164: Weapon_tip
     4300000: Model
-    7400000: Take 001
+    7400000: CaitlynDeath
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Model
   materials:
     importMaterials: 1
@@ -194,11 +195,203 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CaitlynDeath
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BUFFBONE_GLB_CHANNEL_LOC
+        weight: 1
+      - path: BUFFBONE_GLB_GROUND_LOC
+        weight: 1
+      - path: C_BUFFBONE_GLB_CENTER_LOC
+        weight: 1
+      - path: C_BUFFBONE_GLB_LAYOUT_LOC
+        weight: 1
+      - path: C_BUFFBONE_GLB_OVERHEAD_LOC
+        weight: 1
+      - path: Model
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Hip
+        weight: 1
+      - path: Root/Hip/B_Cloth
+        weight: 1
+      - path: Root/Hip/F_Cloth
+        weight: 1
+      - path: Root/Hip/L_Cloth
+        weight: 1
+      - path: Root/Hip/L_Thigh
+        weight: 1
+      - path: Root/Hip/L_Thigh/L_Knee
+        weight: 1
+      - path: Root/Hip/L_Thigh/L_Knee/L_BUFFBONE_GLB_FOOT_LOC
+        weight: 1
+      - path: Root/Hip/L_Thigh/L_Knee/L_Foot
+        weight: 1
+      - path: Root/Hip/L_Thigh/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Root/Hip/R_Cloth
+        weight: 1
+      - path: Root/Hip/R_Thigh
+        weight: 1
+      - path: Root/Hip/R_Thigh/R_Knee
+        weight: 1
+      - path: Root/Hip/R_Thigh/R_Knee/R_BUFFBONE_GLB_FOOT_LOC
+        weight: 1
+      - path: Root/Hip/R_Thigh/R_Knee/R_Foot
+        weight: 1
+      - path: Root/Hip/R_Thigh/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Root/Spine
+        weight: 1
+      - path: Root/Spine/Chest
+        weight: 1
+      - path: Root/Spine/Chest/C_BUFFBONE_GLB_CHEST_LOC
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_BUFFBONE_GLB_HAND_LOC
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_Hand
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_Hand/L_Finger
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_Hand/L_Finger/L_Finger_b
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_Hand/L_PARENTING_HAND_LOC
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_Hand/L_Thumb
+        weight: 1
+      - path: Root/Spine/Chest/L_Shoulder/L_UpArm/L_ForeArm/L_Hand/L_Thumb/L_Thumb_b
+        weight: 1
+      - path: Root/Spine/Chest/Neck
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/B_Hair
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/B_Hair/B_Hair_b
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/C_BUFFBONE_GLB_HEAD_LOC
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/F_Hair
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/F_Hair/F_Hair_b
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/F_Hair/F_Hair_b/F_Hair_c
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat/Hat_b
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat/Hat_b/Hat_c
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat/Hat_b/Hat_c/Hat_d
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat/Hat_b/Hat_c/Hat_d/Scope
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat/Hat_b/Hat_c/Hat_d/Scope_b
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Hat/Hat_b/Hat_c/Hat_d/Scope_c
+        weight: 1
+      - path: Root/Spine/Chest/Neck/Head/Mouth
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_BUFFBONE_GLB_HAND_LOC
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/R_Finger
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/R_Finger/R_Finger_b
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/R_PARENTING_HAND_LOC
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/R_Thumb
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/R_Thumb/R_Thumb_b
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Barrel_node_a
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Barrel_node_b
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Barrel_node_c
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Barrel_node_d
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Bolt
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/BUFFBONE_GLB_WEAPON_1
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Bullet_clip
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Bullet_shell
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Flintlock
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Scope1
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Scope1/BUFFBONE_CSTM_WEAPON_1
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Scope2
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Scope2/BUFFBONE_CSTM_WEAPON_2
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Weap_barrel2
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Weap_barrel2/BUFFBONE_CSTM_WEAPON_4
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Weap_barrel2/Weapon_tip
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Weap_barrel2/Weapon_tip/BUFFBONE_CSTM_WEAPON_5
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Weap_barrel2/Weapon_tip/Scope3
+        weight: 1
+      - path: Root/Spine/Chest/R_Shoulder/R_UpArm/R_ForeArm/R_Hand/Weapon/Weapon_barrel/Weap_barrel2/Weapon_tip/Scope3/BUFFBONE_CSTM_WEAPON_3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -233,7 +426,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
