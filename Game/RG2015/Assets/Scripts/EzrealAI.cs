@@ -110,7 +110,7 @@ public class EzrealAI : MonoBehaviour
         Vector3 t_ShotDestination = new Vector3(t_X, 0, t_Y);
 
         transform.forward = (t_ShotDestination - transform.position).normalized;
-        GameObject projectile = (GameObject)GameObject.Instantiate(m_QShotPrefab, transform.position, Quaternion.identity);
+        GameObject projectile = (GameObject)GameObject.Instantiate(m_QShotPrefab, new Vector3(transform.position.x, 1.6f, transform.position.z), Quaternion.FromToRotation(transform.position, t_ShotDestination));
         projectile.GetComponent<EzrealQ>().setEndPosition(t_ShotDestination);
     }
 

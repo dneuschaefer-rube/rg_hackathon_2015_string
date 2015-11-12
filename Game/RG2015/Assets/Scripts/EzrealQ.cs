@@ -3,9 +3,10 @@ using System.Collections;
 
 public class EzrealQ : MonoBehaviour {
 
-    public float speed;
+    public float speed = 5.0f;
+    public float maxDist = 40.0f;
     public Vector3 endPosition;
-    private Vector3 startPosition;
+    public Vector3 startPosition;
 	// Use this for initialization
 	void Start () {
 	    //Load Start and End Position
@@ -15,14 +16,18 @@ public class EzrealQ : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    //Movement
-        transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+
+        float t_Distance = Vector3.Distance(transform.position, startPosition);
+        if (t_Distance > maxDist)
+            Destroy(this.gameObject);
+
+        else this.transform.Translate(-transform.right * speed * Time.deltaTime, Space.World);
 	}
 
     public void setEndPosition(Vector3 position)
     {
-        Debug.Log("POSITION SET");
         endPosition = position;
-        transform.forward = (endPosition - startPosition).normalized;
+        transform.forward = Quaternion.Euler(0, 90, 0) * (endPosition - startPosition).normalized;
     }
 
     void OnTriggerEnter(Collider other)

@@ -32,9 +32,9 @@ public class Rupture : MonoBehaviour {
             float fracJourney = distCovered / journeyLength;
 
             if (retract)
-                mesh.transform.position = Vector3.Lerp(mesh.transform.position, meshPosition, fracJourney);
+                mesh.transform.position = Vector3.Lerp(popUpPosition, meshPosition, fracJourney);
             else
-                mesh.transform.position = Vector3.Lerp(mesh.transform.position, popUpPosition, fracJourney);
+                mesh.transform.position = Vector3.Lerp(meshPosition, popUpPosition, fracJourney);
 
             if (mesh.transform.position == popUpPosition)
             {
