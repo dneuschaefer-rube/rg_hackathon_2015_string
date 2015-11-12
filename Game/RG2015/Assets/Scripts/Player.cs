@@ -33,6 +33,12 @@ public class Player : MonoBehaviour
 
     void UpdateKeyboard()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (!IsDashing() && IsWalking())
+                CancelMovement();
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             PlayAnimation(m_Character + "Q", true);
@@ -125,7 +131,7 @@ public class Player : MonoBehaviour
 
     bool CanWalk()
     {
-        if (IsCasting('W'))
+        if (m_Character == "Renekton" && IsCasting('W'))
             return false;
 
         if (IsDashing())
@@ -137,11 +143,19 @@ public class Player : MonoBehaviour
 
     bool IsDashing()
     {
-        if(m_Character=="Renekton")
+        if(m_Character == "Renekton")
         {
             return IsCasting('E');
         }
 
+        return false;
+    }
+
+    bool IsWalking()
+    {
+        Vector3 t_Direction = m_WalkingDestination - transform.position;
+        if (t_Direction.sqrMagnitude > 0.01f)
+            return true;
         return false;
     }
 
