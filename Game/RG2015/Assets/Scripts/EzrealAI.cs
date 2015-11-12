@@ -110,10 +110,8 @@ public class EzrealAI : MonoBehaviour
         Vector3 t_ShotDestination = new Vector3(t_X, 0, t_Y);
 
         transform.forward = (t_ShotDestination - transform.position).normalized;
-        GameObject.Instantiate(m_QShotPrefab, transform.position, Quaternion.identity);
-        
-        // trap prefab set destination
-
+        GameObject projectile = (GameObject)GameObject.Instantiate(m_QShotPrefab, transform.position, Quaternion.identity);
+        projectile.GetComponent<EzrealQ>().setEndPosition(t_ShotDestination);
     }
 
     bool IsShooting()
