@@ -71,10 +71,10 @@ public class Player : MonoBehaviour
                     if (IsCasting())
                         break;
 
-                    PlayAnimation(m_Character + "E", true);
                     RaycastHit hit;
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, LayerMask.GetMask("Floor")) && hit.transform)
                     {
+                        PlayAnimation(m_Character + "E", true);
                         Vector3 t_Direction = (hit.point - transform.position).normalized * m_DashDistance;
 
                         m_WalkingDestination = transform.position + t_Direction;
