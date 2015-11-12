@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     public float m_MovementSpeed = 5.0f;
 
-    public float m_DashSpeed = 1000.0f;
-    public float m_DashDistance = 0.0005f;
+    public float m_DashSpeed = 15.0f;
+    public float m_DashDistance = 5f;
 
     private Vector3 m_WalkingDestination;
 
