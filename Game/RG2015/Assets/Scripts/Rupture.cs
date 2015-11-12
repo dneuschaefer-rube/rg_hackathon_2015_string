@@ -51,6 +51,8 @@ public class Rupture : MonoBehaviour {
     {
         //Destroy(other.gameObject);
         if(other.tag == "Player")
-        { }
+        {
+            Debug.Log("HIT PLAYER");
+        }
     }
 }
