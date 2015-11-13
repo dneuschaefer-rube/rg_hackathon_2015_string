@@ -47,6 +47,7 @@ public class EzrealQ : MonoBehaviour {
             if (!other.GetComponent<Player>().IsUndying())
             {
                 other.GetComponent<Player>().ChangeHealth(-50);
+                GameObject.Find("EzrealQHitSound").GetComponent<AudioSource>().Play();
                 Destroy(this.gameObject);
             }
             else

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public Boolean GameOver = false;
     private Boolean EOGAnimationScheduled, EOGAnimationRunning = false;
     private float EOGStartTime;
-    private String name = "Helmet Bro";
+    private String playerName = "Helmet Bro";
 
     float m_WalkingTimer;
     //private Global global;
@@ -141,6 +141,20 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (GameObject.Find("PlayerNameInput").GetComponent<InputField>().isFocused)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 1.0f)
+                Time.timeScale = 0.0f;
+            else
+                Time.timeScale = 1.0f;
+        }
+
+        if (Time.timeScale == 0.0f)
+            return;
+
         if (Input.GetKeyDown(KeyCode.S))
         {
             if (!IsDashing() && IsWalking())
@@ -211,15 +225,6 @@ public class Player : MonoBehaviour
                     CancelMovement();
                     break;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (Time.timeScale == 1.0f)
-
-                Time.timeScale = 0.0f;
-            else
-                Time.timeScale = 1.0f;
         }
     }
 
@@ -438,7 +443,7 @@ public class Player : MonoBehaviour
 
     public void NameChanged()
     {
-        name = GameObject.Find("PlayerNameInput").GetComponent<InputField>().text;
+        playerName = GameObject.Find("PlayerNameInput").GetComponent<InputField>().text;
     }
 
     public void Die()
@@ -477,7 +482,7 @@ public class Player : MonoBehaviour
                     Int32 score = Int32.Parse(playerInfo[1]);
                     if (currentScore >= score)
                     {
-                        newHighscore.Add(name + "," + currentScore.ToString());
+                        newHighscore.Add(playerName + "," + currentScore.ToString());
                         added = true;
                     }
                 }
@@ -485,7 +490,7 @@ public class Player : MonoBehaviour
             newHighscore.Add(players[i - 1]);
         }
         if (!added)
-            newHighscore.Add(name + "," + currentScore.ToString());
+            newHighscore.Add(playerName + "," + currentScore.ToString());
         File.WriteAllLines("highscore.txt", newHighscore.ToArray());
     }
 
