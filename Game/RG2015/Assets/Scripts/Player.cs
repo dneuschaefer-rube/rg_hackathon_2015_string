@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     public float m_DashSpeed = 15.0f;
     public float m_DashDistance = 5f;
 
+    public float m_HowBigShouldRenektonBecomeWhenHeUlts = 1.75f; // In the spirit of the Hackathon, there has to be horrible variable names.
+    public float m_UltDurationSeconds = 10f;
+    private float m_UltTimer = 0.0f;
+    private bool m_InUlt = false;
+
     private Vector3 m_WalkingDestination;
 
     public GameObject m_StunnedParticle;
@@ -21,8 +26,9 @@ public class Player : MonoBehaviour
     private bool m_MovementImpaired = false;
     private String m_AnimationPlaying;
 
-	public Single[] CooldownTimes = new Single[4];
-	public Single[] CurrentCooldowns = new Single[4] { 0.0f, 0.0f, 0.0f, 0.0f };
+
+    public Single[] CooldownTimes = new Single[] { 8.0f, 5.0f, 13.0f, 25.0f };
+    private Single[] CurrentCooldowns = new Single[4] { 0.0f, 0.0f, 0.0f, 0.0f };
 
     // Use this for initialization
     void Start ()
@@ -41,9 +47,12 @@ public class Player : MonoBehaviour
 		switch (m_Character)
 		{
 			case "Renekton":
-				CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 3.0f };
-				break;
-		}
+                //CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 18.0f };
+
+                if (CooldownTimes[3] < m_UltDurationSeconds)
+                    Debug.LogError("The cooldown for Renekton's ult is lower than Renekton's ult duration.");
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -57,7 +66,9 @@ public class Player : MonoBehaviour
         UpdateKeyboard();
         UpdateMovement();
 
-        if(m_AnimationBlocking)
+        UpdateUltState();
+
+        if (m_AnimationBlocking)
             m_AnimationBlocking = GetComponent<Animation>().IsPlaying(m_AnimationPlaying);
 
 		for (int i = 0; i < CurrentCooldowns.Length; i++) 
@@ -72,6 +83,20 @@ public class Player : MonoBehaviour
 					GameObject.Find (GetSpellName(i) + "_CooldownTimer").GetComponent<Text> ().text = "";
 				}
 			}
+    }
+
+    void UpdateUltState()
+    {
+        if (m_InUlt && m_UltTimer <= 0f)
+        {
+            transform.localScale /= m_HowBigShouldRenektonBecomeWhenHeUlts;
+            m_MovementSpeed /= m_HowBigShouldRenektonBecomeWhenHeUlts;
+            m_DashSpeed /= m_HowBigShouldRenektonBecomeWhenHeUlts;
+            m_DashDistance /= m_HowBigShouldRenektonBecomeWhenHeUlts;
+            m_InUlt = false;
+            m_UltTimer = 0.0f;
+        }
+        m_UltTimer -= Time.deltaTime;
     }
 
     void UpdateKeyboard()
@@ -127,19 +152,30 @@ public class Player : MonoBehaviour
             }
         }
 
-		if ((Input.GetKeyDown(KeyCode.R)) && (!SpellOnCooldown("E")))
-		{
-			switch (m_Character)
-			{
-				case "Renekton":
-					// TODO: Renekton ult stuff
-					break;
-			}
-		}
+        if ((Input.GetKeyDown(KeyCode.R)) && (!SpellOnCooldown("R")))
+        {
+            switch (m_Character)
+            {
+                case "Renekton":
+                    transform.localScale *= m_HowBigShouldRenektonBecomeWhenHeUlts;
+                    m_MovementSpeed *= m_HowBigShouldRenektonBecomeWhenHeUlts;
+                    m_DashSpeed *= m_HowBigShouldRenektonBecomeWhenHeUlts;
+                    m_DashDistance *= m_HowBigShouldRenektonBecomeWhenHeUlts;
+                    m_InUlt = true;
+                    m_UltTimer = m_UltDurationSeconds;
+
+                    CastSpell("R");
+                    CancelMovement();
+                    break;
+            }
+        }
     }
 
     void UpdateMovement()
-    { 
+    {
+        if (m_Character == "Renekton" && IsCasting('R'))
+            return;
+
         if (Input.GetMouseButton(1) && CanWalk())
         {
             RaycastHit hit;
@@ -150,6 +186,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        m_WalkingDestination.y = transform.position.y;
         Vector3 t_Direction = m_WalkingDestination - transform.position;
 
         if (t_Direction.sqrMagnitude > 0.01f)
