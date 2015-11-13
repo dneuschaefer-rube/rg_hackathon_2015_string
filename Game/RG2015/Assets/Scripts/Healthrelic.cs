@@ -19,7 +19,7 @@ public class Healthrelic : MonoBehaviour {
         //Destroy(other.gameObject);
         if (other.tag == "Player")
         {
-            other.GetComponent<Player>().Heal();
+            other.GetComponent<Player>().ChangeHealth(50);
         }
     }
 }
