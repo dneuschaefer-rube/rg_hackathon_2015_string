@@ -30,7 +30,7 @@ public class LuxAI : MonoBehaviour {
         m_ShootPosition.z = m_Origin.z;
         m_Destination.z = m_Origin.z;
         this.transform.position = m_Origin;
-        GameObject.Find("LuxLaugh").GetComponent<AudioSource>().Play();
+        GameObject.Find("LuxLaughSound").GetComponent<AudioSource>().Play();
 
     }
 
@@ -67,7 +67,7 @@ public class LuxAI : MonoBehaviour {
                 break;
 
             case State.SHOOTING:
-                GameObject.Find("LuxLaugh").GetComponent<AudioSource>().Stop();
+                GameObject.Find("LuxLaughSound").GetComponent<AudioSource>().Stop();
                 if (!IsShooting())
                 {
                     m_CurrentState = State.RUNNING;

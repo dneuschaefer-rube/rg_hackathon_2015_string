@@ -25,6 +25,7 @@ public class HealthRelicManager : MonoBehaviour {
         {
             StartCoroutine(Respawn(respawnTime));
             player.ChangeHealth(healAmount);
+            GameObject.Find("CollectRelicSound").GetComponent<AudioSource>().Play();
             player.BoostSpeed(speedBoost, speedBoostTime);
         }
 	}
