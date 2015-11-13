@@ -158,8 +158,9 @@ public class Player : MonoBehaviour
 
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, LayerMask.GetMask("Floor")) && hit.transform)
                     {
-                        Vector3 t_Direction = (hit.point - transform.position).normalized * m_DashDistance;
+                        Vector3 t_Direction = (hit.point - transform.position);
                         t_Direction.y = 0f;
+                        t_Direction = t_Direction.normalized * m_DashDistance;
                         m_WalkingDestination = transform.position + t_Direction;
 						CastSpell("E");
                     }
