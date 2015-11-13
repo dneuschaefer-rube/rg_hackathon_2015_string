@@ -3,7 +3,7 @@ using System.Collections;
 
 public class XerathE : MonoBehaviour {
     public float speed = 15.0f;
-    public float maxDist = 40.0f;
+    public float maxDist = 100.0f;
     public float stunTime = 0.25f;
     public Vector3 endPosition;
     public Vector3 startPosition;
