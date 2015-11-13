@@ -223,6 +223,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool IsUndying()
+    {
+        return IM_INVINCIBLE;
+    }
+
     void UpdateMovement()
     {
         if (m_Character == "Renekton" && IsCasting('R'))
