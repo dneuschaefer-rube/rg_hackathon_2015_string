@@ -334,14 +334,25 @@ public class Player : MonoBehaviour
         return GetComponent<Animation>().IsPlaying(m_Character + Key);
     }
 
-    public void Damaged()
+    public void ChangeHealth(Int32 value)
     {
-        //Called when Renekton gets hit by shiz;
+        if (CurrentHealth + value < 0)
+            CurrentHealth = 0;
+        else if (CurrentHealth + value > MaxHealth)
+            CurrentHealth = MaxHealth;
+        else
+            CurrentHealth += value;
+
+        float HealthPercent = (float)CurrentHealth / (float)MaxHealth;
+        GameObject.Find("HealthbarImage").GetComponent<RawImage>().transform.localScale = new Vector3(HealthPercent, 1.0f, 1.0f);
+
+        if (CurrentHealth == 0)
+            Die();
     }
 
-    public void Heal()
+    public void Die()
     {
-        //Heal the player because they are shit and got hit.
+        // you suck
     }
 
     public void Stun(float time)
