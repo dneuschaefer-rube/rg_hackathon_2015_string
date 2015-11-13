@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.R)) && (!SpellOnCooldown("R")))
+        if ((Input.GetKeyDown(KeyCode.R)) && !IsCasting('0') && (!SpellOnCooldown("R")))
         {
             switch (m_Character)
             {
