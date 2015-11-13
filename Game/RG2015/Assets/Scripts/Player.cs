@@ -222,6 +222,11 @@ public class Player : MonoBehaviour
 			PlayAnimation(m_Character + "Idle", false, false);
     }
 
+    public Vector3 GetWalkingDirection()
+    {
+        return m_WalkingDestination - transform.position;
+    }
+
     void CancelMovement()
     {
         m_WalkingDestination = transform.position;

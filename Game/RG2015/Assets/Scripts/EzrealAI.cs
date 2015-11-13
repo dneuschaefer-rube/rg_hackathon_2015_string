@@ -106,7 +106,7 @@ public class EzrealAI : MonoBehaviour
 
         transform.forward = normalizedDirection;
         GameObject projectile = (GameObject)GameObject.Instantiate(m_QShotPrefab, new Vector3(transform.position.x, 1.6f, transform.position.z), Quaternion.identity);
-        projectile.GetComponent<EzrealQ>().setEndPosition(Player.transform.position);
+        projectile.GetComponent<EzrealQ>().setEndPosition(Player.transform.position + Player.GetComponent<Player>().GetWalkingDirection() * Random.Range(0f,3f));
     }
 
     bool IsShooting()
