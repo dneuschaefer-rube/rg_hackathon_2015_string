@@ -277,4 +277,9 @@ public class Player : MonoBehaviour
 
         return GetComponent<Animation>().IsPlaying(m_Character + Key);
     }
+
+    public void Damaged()
+    {
+        //Called when Renekton gets hit by shiz;
+    }
 }

@@ -29,6 +29,7 @@ public class CaitCupcake : MonoBehaviour {
             GetComponent<Animation>().CrossFade("CaitlynTrapTrigger");
             m_TrapTriggered = true;
             Debug.Log("HIT PLAYER");
+            other.GetComponent<Player>().Damaged();
         }
     }
 }

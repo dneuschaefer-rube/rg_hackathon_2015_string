@@ -19,6 +19,7 @@ public class XerathE : MonoBehaviour {
         if (other.tag == "Player")
         {
             Debug.Log("HIT PLAYER");
+            other.GetComponent<Player>().Damaged();
         }
     }
 }

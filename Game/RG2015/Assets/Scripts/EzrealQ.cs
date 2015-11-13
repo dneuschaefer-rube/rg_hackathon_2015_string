@@ -37,6 +37,7 @@ public class EzrealQ : MonoBehaviour {
         {
             Debug.Log("HIT PLAYER");
             Destroy(this.gameObject);
+            other.GetComponent<Player>().Damaged();
         }
     }
 }
