@@ -73,7 +73,7 @@ public class CaitlynAI : MonoBehaviour
             case State.PLACING_TRAP:
                 if (!IsPlacingTrap())
                 {
-                    PlayAnimation("CaitlynIdle");
+                    PlayAnimation("CaitlynIdle", false);
                     goto case State.UNKNOWN;
                 }
                 break;
@@ -132,7 +132,7 @@ public class CaitlynAI : MonoBehaviour
     {
         //Debug.Log("Caitlyn is running.");
         m_CurrentState = State.RUNNING;
-        PlayAnimation("CaitlynRun");
+        PlayAnimation("CaitlynRun", false);
 
         m_Destination = transform.position;
         m_Destination.x = m_Origin.x + Random.Range(-10.0f, 10.0f);
@@ -143,10 +143,10 @@ public class CaitlynAI : MonoBehaviour
         m_IdleTimer = Random.Range(0.2f, 1.0f);
         //Debug.Log("Caitlyn is idling for " + m_IdleTimer + " sec.");
         m_CurrentState = State.IDLING;
-        PlayAnimation("CaitlynIdle");
+		PlayAnimation("CaitlynIdle", false);
     }
 
-    void PlayAnimation(string a_Animation, bool a_Block = false)
+    void PlayAnimation(string a_Animation, bool a_Block)
     {
         if (!GetComponent<Animation>().isPlaying || !m_AnimationBlocking)
         {

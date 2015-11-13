@@ -5,8 +5,9 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public GameObject camera;
-    bool IM_INVINCIBLE = false;
+    public new GameObject camera;
+    bool IM_INVINCIBLE = false;	
+
     public float m_MovementSpeed = 5.0f;
 
     public float m_DashSpeed = 15.0f;
@@ -64,8 +65,7 @@ public class Player : MonoBehaviour
     {
         //Update Camera X:
         camera.transform.position = Vector3.Lerp(
-        camera.transform.position, new Vector3(this.transform.position.x, camera.transform.position.y, camera.transform.position.z),
-        Time.deltaTime);
+			camera.transform.position, new Vector3(this.transform.position.x, camera.transform.position.y, camera.transform.position.z), Time.deltaTime);
 
         UpdateKeyboard();
 
