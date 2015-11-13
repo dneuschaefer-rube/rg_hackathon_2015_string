@@ -9,6 +9,7 @@ public class LuxLaser : MonoBehaviour {
 
     public float WarningDelay = 0.05f;
 
+    public float spawnDelay = 0.1f;
     public float redLaserTime = 0.15f;
     public float rainbowLaserTime = 0.4f;
 
@@ -84,8 +85,19 @@ public class LuxLaser : MonoBehaviour {
         }
     }
 
+    public void setEndPosition(Vector3 position)
+    {
+        /*endPosition = position;
+
+        Vector3 CoolBoyPosition = transform.position;
+        CoolBoyPosition.y = 0;
+
+        transform.forward = (endPosition - CoolBoyPosition).normalized;*/
+    }
+
     IEnumerator SpawnLuxLaser()
     {
+        yield return new WaitForSeconds(spawnDelay);
         startTime = Time.time;
         currentState = State.WARNING;
         redLaser.SetActive(true);
