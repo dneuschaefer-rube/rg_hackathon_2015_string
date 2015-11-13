@@ -419,6 +419,18 @@ public class Player : MonoBehaviour
             Die();
     }
 
+    public void BoostSpeed(float speedBoost, float speedBoostTime)
+    {
+        StartCoroutine(BoostSpeedCoroutine(speedBoost, speedBoostTime));
+    }
+
+    IEnumerator BoostSpeedCoroutine(float speedBoost, float speedBoostTime)
+    {
+        m_MovementSpeed += speedBoost;
+        yield return new WaitForSeconds(speedBoostTime);
+        m_MovementSpeed -= speedBoost;
+    }
+
     public void NameChanged()
     {
         name = GameObject.Find("PlayerNameInput").GetComponent<InputField>().text;
