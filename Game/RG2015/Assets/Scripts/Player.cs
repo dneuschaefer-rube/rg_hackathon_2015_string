@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         switch (m_Character)
         {
             case "Renekton":
-                CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 18.0f };
+				CooldownTimes = new Single[] { 10.0f, 5.0f, 3.0f, 30.0f };
                 MaxHealth = 500;
                 CurrentHealth = MaxHealth;
 
