@@ -17,13 +17,9 @@ public class SpawnManager : MonoBehaviour {
     public float[] spawnTimes;
 	// Use this for initialization
 	void Start () {
-
+        StartCoroutine(SpawnWaves());
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
     IEnumerator SpawnWaves()
     {
@@ -32,7 +28,20 @@ public class SpawnManager : MonoBehaviour {
             yield return new WaitForSeconds(spawnTimes[i]);
             if(i == 0)
             {
-
+                GameObject.Instantiate(Ezreal, SpawnPoint1, Quaternion.identity);
+                GameObject.Instantiate(Ezreal, SpawnPoint2, Quaternion.identity);
+                GameObject.Instantiate(Caitlyn, SpawnPoint1, Quaternion.identity);
+            }else if(i == 1)
+            {
+                GameObject.Instantiate(Xerath, SpawnPoint1, Quaternion.identity);
+            }
+            else if (i == 2)
+            {
+                GameObject.Instantiate(Xerath, SpawnPoint2, Quaternion.identity);
+            }
+            else if (i == 3)
+            {
+                GameObject.Instantiate(Lux, LuxSpawnPoint, Quaternion.identity);
             }
         }
     }
