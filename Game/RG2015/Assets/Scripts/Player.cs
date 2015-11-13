@@ -36,7 +36,9 @@ public class Player : MonoBehaviour
     public Boolean GameOver = false;
     private Boolean EOGAnimationScheduled, EOGAnimationRunning = false;
     private float EOGStartTime;
-    private String name = "player";
+    private String name = "Helmet Bro";
+
+    float m_WalkingTimer;
     //private Global global;
 
     // Use this for initialization
@@ -186,6 +188,7 @@ public class Player : MonoBehaviour
                         t_Direction.y = 0f;
                         t_Direction = t_Direction.normalized * m_DashDistance;
                         m_WalkingDestination = transform.position + t_Direction;
+                        m_WalkingTimer = 0.0f;
                         CastSpell("E");
                     }
                     break;
@@ -242,10 +245,10 @@ public class Player : MonoBehaviour
 
         m_WalkingDestination.y = transform.position.y;
         Vector3 t_Direction = m_WalkingDestination - transform.position;
+        t_Direction.y = 0;
 
         if (t_Direction.sqrMagnitude > 0.001f)
         {
-            t_Direction.y = 0;
             t_Direction = t_Direction.normalized;
 
             transform.Translate(t_Direction * GetSpeed() * Time.deltaTime, Space.World);
