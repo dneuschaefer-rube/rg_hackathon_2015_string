@@ -31,7 +31,7 @@ public class CaitCupcake : MonoBehaviour {
             m_TrapTriggered = true;
             Debug.Log("HIT PLAYER");
             other.GetComponent<Player>().Damaged();
-            other.GetComponent<Player>().DisableMovement(stunTime);
+            other.GetComponent<Player>().Stun(stunTime);
         }
     }
 }

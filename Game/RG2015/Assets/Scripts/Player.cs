@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     private Vector3 m_WalkingDestination;
 
+    public GameObject m_StunnedParticle;
+
     public String m_Character = "Renekton";
     private bool m_AnimationBlocking = false;
     private bool m_MovementImpaired = false;
@@ -294,7 +296,7 @@ public class Player : MonoBehaviour
         //Called when Renekton gets hit by shiz;
     }
 
-    public void DisableMovement(float time)
+    public void Stun(float time)
     {
         Debug.Log("Stunned1");
         StartCoroutine(ImpairMovement(time));
@@ -304,9 +306,11 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Stunned");
         m_MovementImpaired = true;
+        m_StunnedParticle.SetActive(true);
         CancelMovement();
         yield return new WaitForSeconds(time);
         Debug.Log("UnStunned");
         m_MovementImpaired = false;
+        m_StunnedParticle.SetActive(false);
     }
 }
