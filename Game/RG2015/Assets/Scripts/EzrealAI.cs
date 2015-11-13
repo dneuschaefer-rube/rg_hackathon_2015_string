@@ -70,7 +70,7 @@ public class EzrealAI : MonoBehaviour
             case State.SHOOTING:
                 if (!IsShooting())
                 {
-                    PlayAnimation("EzrealIdle");
+				PlayAnimation("EzrealIdle", false);
                     goto case State.UNKNOWN;
                 }
                 break;
@@ -118,7 +118,7 @@ public class EzrealAI : MonoBehaviour
     {
         //Debug.Log("Ezreal is running.");
         m_CurrentState = State.RUNNING;
-        PlayAnimation("EzrealRun");
+		PlayAnimation("EzrealRun", false);
 
         m_Destination = transform.position;
         m_Destination.x = m_Origin.x + Random.Range(-10.0f, 10.0f);
@@ -129,10 +129,10 @@ public class EzrealAI : MonoBehaviour
         m_IdleTimer = Random.Range(0.2f, 1.0f);
         //Debug.Log("Ezreal is idling for " + m_IdleTimer + " sec.");
         m_CurrentState = State.IDLING;
-        PlayAnimation("EzrealIdle");
+		PlayAnimation("EzrealIdle", false);
     }
 
-    void PlayAnimation(string a_Animation, bool a_Block = false)
+    void PlayAnimation(string a_Animation, bool a_Block)
     {
         if (!GetComponent<Animation>().isPlaying || !m_AnimationBlocking)
         {
