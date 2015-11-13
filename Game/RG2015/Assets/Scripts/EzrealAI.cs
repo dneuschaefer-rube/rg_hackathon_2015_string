@@ -56,7 +56,8 @@ public class EzrealAI : MonoBehaviour
 
             case State.RUNNING:
                 Vector3 t_Direction = m_Destination - transform.position;
-                if (t_Direction.sqrMagnitude < 0.01f)
+                t_Direction.y = 0;
+                if (t_Direction.sqrMagnitude < 1.0f)
                 {
                     goto case State.UNKNOWN;
                 }
@@ -133,6 +134,7 @@ public class EzrealAI : MonoBehaviour
 			PlayAnimation ("EzrealRun", false);
 
 			m_Destination = transform.position;
+            m_Destination.y = 0;
 			m_Destination.x = m_Origin.x + Random.Range (leftBoundary, rightBoundary);
 
 		} while((m_Destination - transform.position).sqrMagnitude > Mathf.Pow (15, 2));
