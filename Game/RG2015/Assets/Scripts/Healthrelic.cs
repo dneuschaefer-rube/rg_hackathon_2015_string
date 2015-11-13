@@ -13,13 +13,4 @@ public class Healthrelic : MonoBehaviour {
 	    //Rotate Health Relic
         transform.Rotate(0, 50 * Time.deltaTime, 0); //rotates 50 degrees per second around z axis
 	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        //Destroy(other.gameObject);
-        if (other.tag == "Player")
-        {
-            other.GetComponent<Player>().ChangeHealth(50);
-        }
-    }
 }
