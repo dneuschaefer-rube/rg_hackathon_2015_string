@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class XerathAI : MonoBehaviour
-{
+public class XerathAI : MonoBehaviour {
     //Reuse of A lot of Ezreal
     public GameObject m_XerathEPrefab = null;
 
@@ -106,7 +105,7 @@ public class XerathAI : MonoBehaviour
 
         transform.forward = normalizedDirection;
         GameObject projectile = (GameObject)GameObject.Instantiate(m_XerathEPrefab, new Vector3(transform.position.x, 1.6f, transform.position.z), Quaternion.identity);
-        projectile.GetComponent<XerathE>().setEndPosition(Player.transform.position + Player.GetComponent<Player>().GetWalkingDirection() * Random.Range(0f, 3f));
+        projectile.GetComponent<XerathE>().setEndPosition(Player.transform.position);
     }
 
     bool IsShooting()
