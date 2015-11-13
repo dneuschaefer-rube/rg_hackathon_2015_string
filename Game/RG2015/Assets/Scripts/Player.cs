@@ -353,9 +353,9 @@ public class Player : MonoBehaviour
         return GetComponent<Animation>().IsPlaying(m_Character + Key);
     }
 
-    public void ChangeHealth(Int32 value)
+    public void ChangeHealth(Int32 value, bool unblockable = false)
     {
-        if (value < 0 && IM_INVINCIBLE)
+        if (value < 0 && IM_INVINCIBLE && !unblockable)
             return;
 
         if (CurrentHealth + value < 0)
