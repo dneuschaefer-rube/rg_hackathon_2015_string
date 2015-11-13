@@ -2,11 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
     public new GameObject camera;
-    bool IM_INVINCIBLE = false;	
+    bool IM_INVINCIBLE = false;
 
     public float m_MovementSpeed = 5.0f;
 
@@ -27,29 +29,33 @@ public class Player : MonoBehaviour
     private bool m_MovementImpaired = false;
     private String m_AnimationPlaying;
 
-	public Single[] CooldownTimes;
-	private Single[] CurrentCooldowns = new Single[4];
+    public Single[] CooldownTimes;
+    private Single[] CurrentCooldowns = new Single[4];
     public Int32 MaxHealth;
     private Int32 CurrentHealth;
-    private Boolean GameOver = false;
+    public Boolean GameOver = false;
+    private Boolean EOGAnimationScheduled, EOGAnimationRunning = false;
+    private float EOGStartTime;
+    private String name;
+    //private Global global;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-		String[] Abilities = new String[] { "Q", "W", "E", "R" };
+        String[] Abilities = new String[] { "Q", "W", "E", "R" };
 
-		foreach (String s in Abilities)
-		{
-			Texture2D AbilityTexture = Resources.Load ("HUD/SpellIcons/" + m_Character + "/" + s, typeof(Texture2D)) as Texture2D;
-			GameObject.Find (s + "_Image").GetComponent<RawImage> ().texture = AbilityTexture;
-		}
+        foreach (String s in Abilities)
+        {
+            Texture2D AbilityTexture = Resources.Load("HUD/SpellIcons/" + m_Character + "/" + s, typeof(Texture2D)) as Texture2D;
+            GameObject.Find(s + "_Image").GetComponent<RawImage>().texture = AbilityTexture;
+        }
 
-		Texture2D ChampionTexture = Resources.Load ("HUD/ChampionAvatars/" + m_Character + "_Square_0", typeof(Texture2D)) as Texture2D;
-		GameObject.Find ("ChampionPortrait").GetComponent<RawImage> ().texture = ChampionTexture;
+        Texture2D ChampionTexture = Resources.Load("HUD/ChampionAvatars/" + m_Character + "_Square_0", typeof(Texture2D)) as Texture2D;
+        GameObject.Find("ChampionPortrait").GetComponent<RawImage>().texture = ChampionTexture;
 
-		switch (m_Character)
-		{
-			case "Renekton":
+        switch (m_Character)
+        {
+            case "Renekton":
                 CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 18.0f };
                 MaxHealth = 500;
                 CurrentHealth = MaxHealth;
@@ -57,7 +63,7 @@ public class Player : MonoBehaviour
                 if (CooldownTimes[3] < m_UltDurationSeconds)
                     Debug.LogError("The cooldown for Renekton's ult is lower than Renekton's ult duration.");
                 break;
-		}
+        }
     }
 
     // Update is called once per frame
@@ -65,9 +71,23 @@ public class Player : MonoBehaviour
     {
         //Update Camera X:
         camera.transform.position = Vector3.Lerp(
-			camera.transform.position, new Vector3(this.transform.position.x, camera.transform.position.y, camera.transform.position.z), Time.deltaTime);
+            camera.transform.position, new Vector3(this.transform.position.x, camera.transform.position.y, camera.transform.position.z), Time.deltaTime);
 
         UpdateKeyboard();
+
+        if (EOGAnimationScheduled && (Time.time > EOGStartTime))
+        {
+            EOGAnimationScheduled = false;
+            EOGAnimationRunning = true;
+        }
+
+        if (EOGAnimationRunning)
+        {
+            CanvasGroup c = GameObject.Find("DefeatCanvas").GetComponent<CanvasGroup>();
+            c.alpha += Math.Min(Time.deltaTime / 3, 1.0f);
+            if (c.alpha == 1.0f)
+                EOGAnimationRunning = false;
+        }
 
         if (GameOver)
             return;
@@ -81,18 +101,18 @@ public class Player : MonoBehaviour
 
         GameObject.Find("HealthbarText").GetComponent<Text>().text = CurrentHealth.ToString() + "/" + MaxHealth.ToString();
 
-        for (int i = 0; i < CurrentCooldowns.Length; i++) 
-			if (CurrentCooldowns [i] > 0)
-			{
-				CurrentCooldowns [i] = Math.Max (CurrentCooldowns [i] - Time.deltaTime, 0);
-				GameObject.Find (GetSpellName(i) + "_CooldownTimer").GetComponent<Text> ().text = CurrentCooldowns [i].ToString(("0.0"));
+        for (int i = 0; i < CurrentCooldowns.Length; i++)
+            if (CurrentCooldowns[i] > 0)
+            {
+                CurrentCooldowns[i] = Math.Max(CurrentCooldowns[i] - Time.deltaTime, 0);
+                GameObject.Find(GetSpellName(i) + "_CooldownTimer").GetComponent<Text>().text = CurrentCooldowns[i].ToString(("0.0"));
 
-				if(CurrentCooldowns[i] == 0)
-				{
-					GameObject.Find (GetSpellName(i) + "_CooldownGray").GetComponent<Image> ().enabled = false;
-					GameObject.Find (GetSpellName(i) + "_CooldownTimer").GetComponent<Text> ().text = "";
-				}
-			}
+                if (CurrentCooldowns[i] == 0)
+                {
+                    GameObject.Find(GetSpellName(i) + "_CooldownGray").GetComponent<Image>().enabled = false;
+                    GameObject.Find(GetSpellName(i) + "_CooldownTimer").GetComponent<Text>().text = "";
+                }
+            }
     }
 
     void UpdateUltState()
@@ -113,7 +133,11 @@ public class Player : MonoBehaviour
     void UpdateKeyboard()
     {
         if (GameOver)
+        {
+            if ((Input.GetKeyDown(KeyCode.Return)))
+                GameObject.FindGameObjectWithTag("Global").GetComponent<Global>().restart();
             return;
+        }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -122,7 +146,7 @@ public class Player : MonoBehaviour
         }
 
         if ((Input.GetKeyDown(KeyCode.Q)) && (!SpellOnCooldown("Q")))
-        { 
+        {
             CastSpell("Q");
 
             switch (m_Character)
@@ -134,7 +158,7 @@ public class Player : MonoBehaviour
 
         }
 
-		if ((Input.GetKeyDown(KeyCode.W)) && (!SpellOnCooldown("W")))
+        if ((Input.GetKeyDown(KeyCode.W)) && (!SpellOnCooldown("W")))
         {
             CastSpell("W");
 
@@ -146,14 +170,14 @@ public class Player : MonoBehaviour
             }
         }
 
-		if ((Input.GetKeyDown(KeyCode.E)) && (!SpellOnCooldown("E")))
+        if ((Input.GetKeyDown(KeyCode.E)) && (!SpellOnCooldown("E")))
         {
             switch (m_Character)
             {
                 case "Renekton":
                     if (IsCasting('0'))
                         break;
-					
+
                     RaycastHit hit;
 
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, LayerMask.GetMask("Floor")) && hit.transform)
@@ -162,7 +186,7 @@ public class Player : MonoBehaviour
                         t_Direction.y = 0f;
                         t_Direction = t_Direction.normalized * m_DashDistance;
                         m_WalkingDestination = transform.position + t_Direction;
-						CastSpell("E");
+                        CastSpell("E");
                     }
                     break;
             }
@@ -184,6 +208,15 @@ public class Player : MonoBehaviour
                     CancelMovement();
                     break;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 1.0f)
+
+                Time.timeScale = 0.0f;
+            else
+                Time.timeScale = 1.0f;
         }
     }
 
@@ -214,13 +247,13 @@ public class Player : MonoBehaviour
         {
             t_Direction.y = 0;
             t_Direction = t_Direction.normalized;
-            
+
             transform.Translate(t_Direction * GetSpeed() * Time.deltaTime, Space.World);
             transform.forward = t_Direction;
             PlayAnimation(m_Character + "Run", false, false);
         }
         else
-			PlayAnimation(m_Character + "Idle", false, false);
+            PlayAnimation(m_Character + "Idle", false, false);
     }
 
     public Vector3 GetWalkingDirection()
@@ -233,56 +266,56 @@ public class Player : MonoBehaviour
         m_WalkingDestination = transform.position;
     }
 
-	Int32 GetSpellIndex(String spell)
-	{
-		switch (spell)
-		{
-			case "Q":
-				return 0;
-			case "W":
-				return 1;
-			case "E":
-				return 2;
-			case "R":
-				return 3;
-		}
+    Int32 GetSpellIndex(String spell)
+    {
+        switch (spell)
+        {
+            case "Q":
+                return 0;
+            case "W":
+                return 1;
+            case "E":
+                return 2;
+            case "R":
+                return 3;
+        }
 
-		return -1;
-	}
+        return -1;
+    }
 
-	String GetSpellName (Int32 index)
-	{
-		switch (index)
-		{
-		case 0:
-			return "Q";
-		case 1:
-			return "W";
-		case 2:
-			return "E";
-		case 3:
-			return "R";
-		}
-		
-		return "";
-	}
+    String GetSpellName(Int32 index)
+    {
+        switch (index)
+        {
+            case 0:
+                return "Q";
+            case 1:
+                return "W";
+            case 2:
+                return "E";
+            case 3:
+                return "R";
+        }
 
-	void CastSpell(String spell) 
-	{
-		if (IsCasting('0'))
-			return;
+        return "";
+    }
 
-		CurrentCooldowns [GetSpellIndex(spell)] = CooldownTimes [GetSpellIndex(spell)];
-		GameObject.Find (spell + "_CooldownGray").GetComponent<Image> ().enabled = true;
-		GameObject.Find (spell + "_CooldownTimer").GetComponent<Text> ().text = CooldownTimes [GetSpellIndex(spell)].ToString("0.0");
+    void CastSpell(String spell)
+    {
+        if (IsCasting('0'))
+            return;
 
-		PlayAnimation (m_Character + spell, true, false);
-	}
+        CurrentCooldowns[GetSpellIndex(spell)] = CooldownTimes[GetSpellIndex(spell)];
+        GameObject.Find(spell + "_CooldownGray").GetComponent<Image>().enabled = true;
+        GameObject.Find(spell + "_CooldownTimer").GetComponent<Text>().text = CooldownTimes[GetSpellIndex(spell)].ToString("0.0");
 
-	Boolean SpellOnCooldown(String spell) 
-	{
-		return (CurrentCooldowns [GetSpellIndex(spell)] > 0);
-	}
+        PlayAnimation(m_Character + spell, true, false);
+    }
+
+    Boolean SpellOnCooldown(String spell)
+    {
+        return (CurrentCooldowns[GetSpellIndex(spell)] > 0);
+    }
 
     void PlayAnimation(String a_Animation, bool a_Block, bool force)
     {
@@ -293,7 +326,7 @@ public class Player : MonoBehaviour
             m_AnimationPlaying = a_Animation;
             GetComponent<Animation>().CrossFade(a_Animation);
         }
-        
+
         if (a_Block && (!m_AnimationBlocking || !GetComponent<Animation>().IsPlaying(m_AnimationPlaying)))
         {
             m_AnimationBlocking = true;
@@ -319,7 +352,7 @@ public class Player : MonoBehaviour
 
     bool IsDashing()
     {
-        if(m_Character == "Renekton")
+        if (m_Character == "Renekton")
             return IsCasting('E');
 
         return false;
@@ -342,10 +375,10 @@ public class Player : MonoBehaviour
 
         return m_MovementSpeed;
     }
-    
+
     bool IsCasting(char Key)
     {
-        if(Key == '0')
+        if (Key == '0')
         {
             if (GetComponent<Animation>().IsPlaying(m_Character + 'Q') ||
                 GetComponent<Animation>().IsPlaying(m_Character + 'R') ||
@@ -353,7 +386,7 @@ public class Player : MonoBehaviour
                 GetComponent<Animation>().IsPlaying(m_Character + 'W'))
                 return true;
             else
-				return false;
+                return false;
         }
 
         return GetComponent<Animation>().IsPlaying(m_Character + Key);
@@ -378,13 +411,57 @@ public class Player : MonoBehaviour
             Die();
     }
 
+    public void NameChanged()
+    {
+        name = GameObject.Find("PlayerNameInput").GetComponent<InputField>().text;
+    }
+
     public void Die()
     {
         // you suck
+        if (GameOver)
+            return;
         CancelMovement();
         PlayAnimation("RenektonDeath", false, true);
         GameObject.Find("HealthbarText").GetComponent<Text>().text = "0/" + MaxHealth.ToString();
+        Single factor = Screen.width / 1600.0f;
+        GameObject.Find("DefeatImage").GetComponent<RawImage>().transform.localScale = new Vector3(factor, factor, factor);
+        CheckForHighscore();
+        GameObject.FindGameObjectWithTag("Global").GetComponent<Global>().LoadHighscore();
         GameOver = true;
+        EOGAnimationScheduled = true;
+        EOGStartTime = Time.time + 2.2f;
+    }
+
+    public void CheckForHighscore()
+    {
+        Int32 currentScore = Int32.Parse(GameObject.Find("TimerHudText").GetComponent<Text>().text);
+        String[] players = { };
+        List<String> newHighscore = new List<String>();
+        Boolean added = false;
+        if (File.Exists("highscore.txt"))
+            players = File.ReadAllLines("highscore.txt");
+
+        for (int i = 1; i <= players.Length; i++)
+        {
+            if (!added)
+            {
+                String[] playerInfo = players[i - 1].Split(',');
+                if (playerInfo.Length == 2)
+                {
+                    Int32 score = Int32.Parse(playerInfo[1]);
+                    if (currentScore >= score)
+                    {
+                        newHighscore.Add(name + "," + currentScore.ToString());
+                        added = true;
+                    }
+                }
+            }
+            newHighscore.Add(players[i - 1]);
+        }
+        if (!added)
+            newHighscore.Add(name + "," + currentScore.ToString());
+        File.WriteAllLines("highscore.txt", newHighscore.ToArray());
     }
 
     public void Stun(float time)
