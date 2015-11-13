@@ -4,6 +4,7 @@ using System.Collections;
 public class CaitCupcake : MonoBehaviour {
 
     bool m_TrapTriggered = false;
+    public float stunTime = 0.5f;
 	// Use this for initialization
 	void Start () {
 	
@@ -30,6 +31,7 @@ public class CaitCupcake : MonoBehaviour {
             m_TrapTriggered = true;
             Debug.Log("HIT PLAYER");
             other.GetComponent<Player>().Damaged();
+            other.GetComponent<Player>().DisableMovement(stunTime);
         }
     }
 }

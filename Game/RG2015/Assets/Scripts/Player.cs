@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public String m_Character = "Renekton";
     private bool m_AnimationBlocking = false;
+    private bool m_MovementImpaired = false;
     private String m_AnimationPlaying;
 
 	public Single[] CooldownTimes = new Single[4];
@@ -234,6 +235,9 @@ public class Player : MonoBehaviour
 
     bool CanWalk()
     {
+        if (m_MovementImpaired)
+            return false;
+
         if (m_Character == "Renekton" && IsCasting('W'))
             return false;
 
@@ -288,5 +292,21 @@ public class Player : MonoBehaviour
     public void Damaged()
     {
         //Called when Renekton gets hit by shiz;
+    }
+
+    public void DisableMovement(float time)
+    {
+        Debug.Log("Stunned1");
+        StartCoroutine(ImpairMovement(time));
+    }
+
+    IEnumerator ImpairMovement(float time)
+    {
+        Debug.Log("Stunned");
+        m_MovementImpaired = true;
+        CancelMovement();
+        yield return new WaitForSeconds(time);
+        Debug.Log("UnStunned");
+        m_MovementImpaired = false;
     }
 }
