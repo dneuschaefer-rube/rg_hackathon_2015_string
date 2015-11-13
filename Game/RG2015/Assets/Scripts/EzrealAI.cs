@@ -100,19 +100,13 @@ public class EzrealAI : MonoBehaviour
         //Debug.Log("Ezreal is shooting.");
         m_CurrentState = State.SHOOTING;
         PlayAnimation("EzrealQ", true);
-
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
-        Bounds t_Floor = m_Floors[Random.Range(0, m_Floors.Length)].GetComponent<BoxCollider>().bounds;
+        Vector3 normalizedDirection = (Player.transform.position - this.transform.position).normalized;
 
-        float t_X = Random.Range(t_Floor.min.x, t_Floor.max.x);
-        float t_Y = Random.Range(t_Floor.min.z, t_Floor.max.z);
-
-        Vector3 t_ShotDestination = new Vector3(t_X, 0, t_Y);
-
-        transform.forward = (t_ShotDestination - transform.position).normalized;
-        GameObject projectile = (GameObject)GameObject.Instantiate(m_QShotPrefab, new Vector3(transform.position.x, 1.6f, transform.position.z), Quaternion.FromToRotation(transform.position, t_ShotDestination));
-        projectile.GetComponent<EzrealQ>().setEndPosition(t_ShotDestination);
+        transform.forward = normalizedDirection;
+        GameObject projectile = (GameObject)GameObject.Instantiate(m_QShotPrefab, new Vector3(transform.position.x, 1.6f, transform.position.z), Quaternion.identity);
+        projectile.GetComponent<EzrealQ>().setEndPosition(Player.transform.position);
     }
 
     bool IsShooting()

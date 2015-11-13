@@ -24,13 +24,17 @@ public class EzrealQ : MonoBehaviour {
 		if (t_Distance > maxDist)
             Destroy(this.gameObject);
         else
-			this.transform.Translate(-transform.right * speed * Time.deltaTime, Space.World);
+			this.transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
 	}
 
     public void setEndPosition(Vector3 position)
     {
         endPosition = position;
-        transform.forward = Quaternion.Euler(0, 90, 0) * (endPosition - startPosition).normalized;
+
+        Vector3 CoolBoyPosition = transform.position;
+        CoolBoyPosition.y = 0;
+
+        transform.forward = (endPosition - CoolBoyPosition).normalized;
     }
 
     void OnTriggerEnter(Collider other)

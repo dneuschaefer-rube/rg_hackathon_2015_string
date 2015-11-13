@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
         m_WalkingDestination.y = transform.position.y;
         Vector3 t_Direction = m_WalkingDestination - transform.position;
 
-        if (t_Direction.sqrMagnitude > 0.01f)
+        if (t_Direction.sqrMagnitude > 0.001f)
         {
             t_Direction.y = 0;
             t_Direction = t_Direction.normalized;
