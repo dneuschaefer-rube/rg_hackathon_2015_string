@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 	private Single[] CurrentCooldowns = new Single[4];
     public Int32 MaxHealth;
     private Int32 CurrentHealth;
+    private Boolean GameOver = false;
 
     // Use this for initialization
     void Start ()
@@ -67,6 +68,10 @@ public class Player : MonoBehaviour
         Time.deltaTime);
 
         UpdateKeyboard();
+
+        if (GameOver)
+            return;
+
         UpdateMovement();
 
         UpdateUltState();
@@ -107,6 +112,9 @@ public class Player : MonoBehaviour
 
     void UpdateKeyboard()
     {
+        if (GameOver)
+            return;
+
         if (Input.GetKeyDown(KeyCode.S))
         {
             if (!IsDashing() && IsWalking())
@@ -202,10 +210,10 @@ public class Player : MonoBehaviour
             
             transform.Translate(t_Direction * GetSpeed() * Time.deltaTime, Space.World);
             transform.forward = t_Direction;
-            PlayAnimation(m_Character + "Run", false);
+            PlayAnimation(m_Character + "Run", false, false);
         }
         else
-			PlayAnimation(m_Character + "Idle", false);
+			PlayAnimation(m_Character + "Idle", false, false);
     }
 
     void CancelMovement()
@@ -256,7 +264,7 @@ public class Player : MonoBehaviour
 		GameObject.Find (spell + "_CooldownGray").GetComponent<Image> ().enabled = true;
 		GameObject.Find (spell + "_CooldownTimer").GetComponent<Text> ().text = CooldownTimes [GetSpellIndex(spell)].ToString("0.0");
 
-		PlayAnimation (m_Character + spell, true);
+		PlayAnimation (m_Character + spell, true, false);
 	}
 
 	Boolean SpellOnCooldown(String spell) 
@@ -264,9 +272,11 @@ public class Player : MonoBehaviour
 		return (CurrentCooldowns [GetSpellIndex(spell)] > 0);
 	}
 
-    void PlayAnimation(String a_Animation, bool a_Block)
+    void PlayAnimation(String a_Animation, bool a_Block, bool force)
     {
-        if (!m_AnimationBlocking)
+        if (GameOver)
+            return;
+        if (force || !m_AnimationBlocking)
         {
             m_AnimationPlaying = a_Animation;
             GetComponent<Animation>().CrossFade(a_Animation);
@@ -280,6 +290,9 @@ public class Player : MonoBehaviour
 
     bool CanWalk()
     {
+        if (GameOver)
+            return false;
+
         if (m_MovementImpaired)
             return false;
 
@@ -353,10 +366,16 @@ public class Player : MonoBehaviour
     public void Die()
     {
         // you suck
+        CancelMovement();
+        PlayAnimation("RenektonDeath", false, true);
+        GameObject.Find("HealthbarText").GetComponent<Text>().text = "0/" + MaxHealth.ToString();
+        GameOver = true;
     }
 
     public void Stun(float time)
     {
+        if (GameOver)
+            return;
         Debug.Log("Stunned1");
         StartCoroutine(ImpairMovement(time));
     }
