@@ -80,7 +80,7 @@ public class LuxLaser : MonoBehaviour {
         //Destroy(other.gameObject);
         if (other.tag == "Player")
         {
-            other.GetComponent<Player>().ChangeHealth(-damage);
+            other.GetComponent<Player>().ChangeHealth(-damage, true);
         }
     }
 
