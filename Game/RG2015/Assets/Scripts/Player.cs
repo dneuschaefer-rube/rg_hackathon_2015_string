@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float m_DashSpeed = 15.0f;
     public float m_DashDistance = 5f;
 
-    public float m_HowBigShouldRenektonBecomeWhenHeUlts = 1.75f; // In the spirit of the Hackathon, there has to be horrible variable names.
+    public float m_HowBigShouldRenektonBecomeWhenHeUlts = 1.4f; // In the spirit of the Hackathon, there has to be horrible variable names.
     public float m_UltDurationSeconds = 10f;
     private float m_UltTimer = 0.0f;
     private bool m_InUlt = false;
@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     private String m_AnimationPlaying;
 
 
-    public Single[] CooldownTimes = new Single[] { 8.0f, 5.0f, 13.0f, 25.0f };
-    private Single[] CurrentCooldowns = new Single[4] { 0.0f, 0.0f, 0.0f, 0.0f };
+	public Single[] CooldownTimes;
+	private Single[] CurrentCooldowns = new Single[4];
 
     // Use this for initialization
     void Start ()
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 		switch (m_Character)
 		{
 			case "Renekton":
-                //CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 18.0f };
+                CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 18.0f };
 
                 if (CooldownTimes[3] < m_UltDurationSeconds)
                     Debug.LogError("The cooldown for Renekton's ult is lower than Renekton's ult duration.");
@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
             m_InUlt = false;
             m_UltTimer = 0.0f;
         }
+
         m_UltTimer -= Time.deltaTime;
     }
 
