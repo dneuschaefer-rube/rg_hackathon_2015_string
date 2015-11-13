@@ -5,7 +5,8 @@ using System;
 
 public class Player : MonoBehaviour
 {
-	public new GameObject camera;
+    public new GameObject camera;
+    bool IM_INVINCIBLE = false;	
 
     public float m_MovementSpeed = 5.0f;
 
@@ -158,6 +159,7 @@ public class Player : MonoBehaviour
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, LayerMask.GetMask("Floor")) && hit.transform)
                     {
                         Vector3 t_Direction = (hit.point - transform.position).normalized * m_DashDistance;
+                        t_Direction.y = 0f;
                         m_WalkingDestination = transform.position + t_Direction;
 						CastSpell("E");
                     }
@@ -188,6 +190,11 @@ public class Player : MonoBehaviour
     {
         if (m_Character == "Renekton" && IsCasting('R'))
             return;
+
+        if (m_Character == "Renekton" && (IsCasting('Q') || IsCasting('W')))
+            IM_INVINCIBLE = true;
+        else
+            IM_INVINCIBLE = false;
 
         if (Input.GetMouseButton(1) && CanWalk())
         {
@@ -348,6 +355,9 @@ public class Player : MonoBehaviour
 
     public void ChangeHealth(Int32 value)
     {
+        if (value < 0 && IM_INVINCIBLE)
+            return;
+
         if (CurrentHealth + value < 0)
             CurrentHealth = 0;
         else if (CurrentHealth + value > MaxHealth)
