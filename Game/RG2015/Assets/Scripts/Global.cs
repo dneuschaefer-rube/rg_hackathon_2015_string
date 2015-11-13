@@ -27,6 +27,11 @@ public class Global : MonoBehaviour
 		GameObject.Find ("TimerHudText").GetComponent<Text> ().text = Score.ToString();
 	}
 
+    public float getGameTime()
+    {
+        return GameTime;
+    }
+
     public void LoadHighscore()
     {
         String[] players = { };
