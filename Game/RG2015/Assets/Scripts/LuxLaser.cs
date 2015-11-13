@@ -59,11 +59,11 @@ public class LuxLaser : MonoBehaviour {
                 }
                 else
                 {
+                    this.GetComponent<BoxCollider>().enabled = true;
                     timeDiff -= laserHalfLife;
                     compl = timeDiff / rainbowLaserTime;
                     line = rainbowLaser.GetComponent<LineRenderer>();
                     lineWidth = Mathf.Lerp(rainbowLaserWidthEnd, rainbowLaserWidthStart, compl);
-                    Debug.Log(compl.ToString());
                     line.SetWidth(lineWidth, lineWidth);
                 }
                 break;
