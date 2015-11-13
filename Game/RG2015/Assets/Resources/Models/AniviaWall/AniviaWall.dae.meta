@@ -1,0 +1,380 @@
+fileFormatVersion: 2
+guid: 74f82f0e9d0006b49a0c92e38e08dc93
+timeCreated: 1447388337
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: L_Ice1
+    100004: L_Ice10
+    100006: L_Ice11
+    100008: L_Ice12
+    100010: L_Ice2
+    100012: L_Ice3
+    100014: L_Ice4
+    100016: L_Ice5
+    100018: L_Ice6
+    100020: L_Ice7
+    100022: L_Ice8
+    100024: L_Ice9
+    100026: M_Ice
+    100028: Model
+    100030: R_Ice1
+    100032: R_Ice10
+    100034: R_Ice11
+    100036: R_Ice12
+    100038: R_Ice2
+    100040: R_Ice3
+    100042: R_Ice4
+    100044: R_Ice5
+    100046: R_Ice6
+    100048: R_Ice7
+    100050: R_Ice8
+    100052: R_Ice9
+    100054: Root
+    400000: //RootNode
+    400002: L_Ice1
+    400004: L_Ice10
+    400006: L_Ice11
+    400008: L_Ice12
+    400010: L_Ice2
+    400012: L_Ice3
+    400014: L_Ice4
+    400016: L_Ice5
+    400018: L_Ice6
+    400020: L_Ice7
+    400022: L_Ice8
+    400024: L_Ice9
+    400026: M_Ice
+    400028: Model
+    400030: R_Ice1
+    400032: R_Ice10
+    400034: R_Ice11
+    400036: R_Ice12
+    400038: R_Ice2
+    400040: R_Ice3
+    400042: R_Ice4
+    400044: R_Ice5
+    400046: R_Ice6
+    400048: R_Ice7
+    400050: R_Ice8
+    400052: R_Ice9
+    400054: Root
+    4300000: Model
+    7400000: AniviaWallSpawn
+    7400002: AniviaWallIdle
+    7400004: AniviaWallDie
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Model
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: AniviaWallSpawn
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Model
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/L_Ice1
+        weight: 1
+      - path: Root/L_Ice2
+        weight: 1
+      - path: Root/L_Ice3
+        weight: 1
+      - path: Root/L_Ice4
+        weight: 1
+      - path: Root/L_Ice5
+        weight: 1
+      - path: Root/L_Ice6
+        weight: 1
+      - path: Root/L_Ice7
+        weight: 1
+      - path: Root/L_Ice8
+        weight: 1
+      - path: Root/L_Ice9
+        weight: 1
+      - path: Root/L_Ice10
+        weight: 1
+      - path: Root/L_Ice11
+        weight: 1
+      - path: Root/L_Ice12
+        weight: 1
+      - path: Root/M_Ice
+        weight: 1
+      - path: Root/R_Ice1
+        weight: 1
+      - path: Root/R_Ice2
+        weight: 1
+      - path: Root/R_Ice3
+        weight: 1
+      - path: Root/R_Ice4
+        weight: 1
+      - path: Root/R_Ice5
+        weight: 1
+      - path: Root/R_Ice6
+        weight: 1
+      - path: Root/R_Ice7
+        weight: 1
+      - path: Root/R_Ice8
+        weight: 1
+      - path: Root/R_Ice9
+        weight: 1
+      - path: Root/R_Ice10
+        weight: 1
+      - path: Root/R_Ice11
+        weight: 1
+      - path: Root/R_Ice12
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: AniviaWallIdle
+      takeName: Take 001
+      firstFrame: 33
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Model
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/L_Ice1
+        weight: 1
+      - path: Root/L_Ice2
+        weight: 1
+      - path: Root/L_Ice3
+        weight: 1
+      - path: Root/L_Ice4
+        weight: 1
+      - path: Root/L_Ice5
+        weight: 1
+      - path: Root/L_Ice6
+        weight: 1
+      - path: Root/L_Ice7
+        weight: 1
+      - path: Root/L_Ice8
+        weight: 1
+      - path: Root/L_Ice9
+        weight: 1
+      - path: Root/L_Ice10
+        weight: 1
+      - path: Root/L_Ice11
+        weight: 1
+      - path: Root/L_Ice12
+        weight: 1
+      - path: Root/M_Ice
+        weight: 1
+      - path: Root/R_Ice1
+        weight: 1
+      - path: Root/R_Ice2
+        weight: 1
+      - path: Root/R_Ice3
+        weight: 1
+      - path: Root/R_Ice4
+        weight: 1
+      - path: Root/R_Ice5
+        weight: 1
+      - path: Root/R_Ice6
+        weight: 1
+      - path: Root/R_Ice7
+        weight: 1
+      - path: Root/R_Ice8
+        weight: 1
+      - path: Root/R_Ice9
+        weight: 1
+      - path: Root/R_Ice10
+        weight: 1
+      - path: Root/R_Ice11
+        weight: 1
+      - path: Root/R_Ice12
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: AniviaWallDie
+      takeName: Take 001
+      firstFrame: 34
+      lastFrame: 162
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Model
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/L_Ice1
+        weight: 1
+      - path: Root/L_Ice2
+        weight: 1
+      - path: Root/L_Ice3
+        weight: 1
+      - path: Root/L_Ice4
+        weight: 1
+      - path: Root/L_Ice5
+        weight: 1
+      - path: Root/L_Ice6
+        weight: 1
+      - path: Root/L_Ice7
+        weight: 1
+      - path: Root/L_Ice8
+        weight: 1
+      - path: Root/L_Ice9
+        weight: 1
+      - path: Root/L_Ice10
+        weight: 1
+      - path: Root/L_Ice11
+        weight: 1
+      - path: Root/L_Ice12
+        weight: 1
+      - path: Root/M_Ice
+        weight: 1
+      - path: Root/R_Ice1
+        weight: 1
+      - path: Root/R_Ice2
+        weight: 1
+      - path: Root/R_Ice3
+        weight: 1
+      - path: Root/R_Ice4
+        weight: 1
+      - path: Root/R_Ice5
+        weight: 1
+      - path: Root/R_Ice6
+        weight: 1
+      - path: Root/R_Ice7
+        weight: 1
+      - path: Root/R_Ice8
+        weight: 1
+      - path: Root/R_Ice9
+        weight: 1
+      - path: Root/R_Ice10
+        weight: 1
+      - path: Root/R_Ice11
+        weight: 1
+      - path: Root/R_Ice12
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
