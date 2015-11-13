@@ -11,8 +11,8 @@ public class XerathAI : MonoBehaviour {
     public float m_ECastChance = 20.0f;
     public float m_RunningChance = 40.0f;
     public float m_IdleChance = 40.0f;
-    public float leftBoundary = -15.0f;
-    public float rightBoundary = 15.0f;
+	public float leftBoundary = -56.0f;
+	public float rightBoundary = 53.0f;
 
     public float m_MovementSpeed = 5f;
 
@@ -124,12 +124,15 @@ public class XerathAI : MonoBehaviour {
 
     void Run()
     {
-        //Debug.Log("Ezreal is running.");
-        m_CurrentState = State.RUNNING;
-        PlayAnimation("XerathRun");
+		do
+		{
+	        //Debug.Log("Ezreal is running.");
+	        m_CurrentState = State.RUNNING;
+	        PlayAnimation("XerathRun");
 
-        m_Destination = transform.position;
-        m_Destination.x = m_Origin.x + Random.Range(leftBoundary, rightBoundary);
+	        m_Destination = transform.position;
+	        m_Destination.x = m_Origin.x + Random.Range(leftBoundary, rightBoundary);
+		} while((m_Destination - transform.position).sqrMagnitude > Mathf.Pow (10, 2));
     }
 
     void Idle()
