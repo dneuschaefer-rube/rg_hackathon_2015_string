@@ -339,6 +339,11 @@ public class Player : MonoBehaviour
         //Called when Renekton gets hit by shiz;
     }
 
+    public void Heal()
+    {
+        //Heal the player because they are shit and got hit.
+    }
+
     public void Stun(float time)
     {
         Debug.Log("Stunned1");
