@@ -102,6 +102,7 @@ public class EzrealAI : MonoBehaviour
         //Debug.Log("Ezreal is shooting.");
         m_CurrentState = State.SHOOTING;
         PlayAnimation("EzrealQ", true);
+        GameObject.Find("EzrealQSound").GetComponent<AudioSource>().Play();
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 normalizedDirection = (Player.transform.position - this.transform.position).normalized;

@@ -101,6 +101,7 @@ public class XerathAI : MonoBehaviour {
         //Debug.Log("Ezreal is shooting.");
         m_CurrentState = State.SHOOTING;
         PlayAnimation("XerathE", true);
+        GameObject.Find("XerathESound").GetComponent<AudioSource>().Play();
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 normalizedDirection = (Player.transform.position - this.transform.position).normalized;

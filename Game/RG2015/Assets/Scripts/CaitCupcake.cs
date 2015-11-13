@@ -39,6 +39,7 @@ public class CaitCupcake : MonoBehaviour {
         if (other.tag == "Player")
         {
             GetComponent<Animation>().CrossFade("CaitlynTrapTrigger");
+            GameObject.Find("CaitlynWActivateSound").GetComponent<AudioSource>().Play();
             m_TrapTriggered = true;
             Debug.Log("HIT PLAYER");
             other.GetComponent<Player>().ChangeHealth(-50);

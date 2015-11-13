@@ -311,6 +311,9 @@ public class Player : MonoBehaviour
         CurrentCooldowns[GetSpellIndex(spell)] = CooldownTimes[GetSpellIndex(spell)];
         GameObject.Find(spell + "_CooldownGray").GetComponent<Image>().enabled = true;
         GameObject.Find(spell + "_CooldownTimer").GetComponent<Text>().text = CooldownTimes[GetSpellIndex(spell)].ToString("0.0");
+
+        GameObject.Find("Renekton" + spell + "Sound").GetComponent<AudioSource>().Play();
+
         if (spell == "R")
             ChangeHealth(50);
 
