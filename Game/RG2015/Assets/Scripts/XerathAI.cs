@@ -101,6 +101,7 @@ public class XerathAI : MonoBehaviour {
         //Debug.Log("Ezreal is shooting.");
         m_CurrentState = State.SHOOTING;
         PlayAnimation("XerathE", true);
+        GameObject.Find("XerathESound").GetComponent<AudioSource>().Play();
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 normalizedDirection = (Player.transform.position - this.transform.position).normalized;
@@ -108,13 +109,13 @@ public class XerathAI : MonoBehaviour {
         transform.forward = normalizedDirection;
         GameObject projectile = (GameObject)GameObject.Instantiate(m_XerathEPrefab, new Vector3(transform.position.x, 1.6f, transform.position.z), Quaternion.identity);
         
-		// projectile.GetComponent<XerathE>().setEndPosition(Player.transform.position);
-
+		projectile.GetComponent<XerathE>().setEndPosition(Player.transform.position);
+/*
 		if(Random.Range(0, 1) > 0.5f)
 			projectile.GetComponent<XerathE>().setEndPosition(Player.transform.position);
 		else
 			projectile.GetComponent<XerathE>().setEndPosition(Player.transform.position + Player.GetComponent<Player>().GetWalkingDirection() * Random.Range(0f, 1.8f));
-    }
+    */}
 
     bool IsShooting()
     {

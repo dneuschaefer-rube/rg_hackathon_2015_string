@@ -105,7 +105,7 @@ public class CaitlynAI : MonoBehaviour
         //Debug.Log("Caitlyn is placing a trap.");
         m_CurrentState = State.PLACING_TRAP;
         PlayAnimation("CaitlynW", true);
-
+        GameObject.Find("CaitlynWSound").GetComponent<AudioSource>().Play();
 
         Bounds t_Floor = m_Floors[Random.Range(0, m_Floors.Length)].GetComponent<BoxCollider>().bounds;
 

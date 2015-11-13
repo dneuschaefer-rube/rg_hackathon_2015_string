@@ -316,6 +316,9 @@ public class Player : MonoBehaviour
         CurrentCooldowns[GetSpellIndex(spell)] = CooldownTimes[GetSpellIndex(spell)];
         GameObject.Find(spell + "_CooldownGray").GetComponent<Image>().enabled = true;
         GameObject.Find(spell + "_CooldownTimer").GetComponent<Text>().text = CooldownTimes[GetSpellIndex(spell)].ToString("0.0");
+
+        GameObject.Find("Renekton" + spell + "Sound").GetComponent<AudioSource>().Play();
+
         if (spell == "R")
             ChangeHealth(50);
 
@@ -419,6 +422,18 @@ public class Player : MonoBehaviour
 
         if (CurrentHealth == 0)
             Die();
+    }
+
+    public void BoostSpeed(float speedBoost, float speedBoostTime)
+    {
+        StartCoroutine(BoostSpeedCoroutine(speedBoost, speedBoostTime));
+    }
+
+    IEnumerator BoostSpeedCoroutine(float speedBoost, float speedBoostTime)
+    {
+        m_MovementSpeed += speedBoost;
+        yield return new WaitForSeconds(speedBoostTime);
+        m_MovementSpeed -= speedBoost;
     }
 
     public void NameChanged()
