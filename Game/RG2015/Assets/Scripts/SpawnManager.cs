@@ -79,6 +79,11 @@ public class SpawnManager : MonoBehaviour {
                 lastSpawnTime = Time.time;
                 lastBossSpawnTime = lastSpawnTime;
             }
+            else if (i == 4)
+            {
+                GameObject.Instantiate(Lux, LuxSpawnPoint, Quaternion.identity);
+                GameObject.Instantiate(Lux, LuxSpawnPoint, Quaternion.identity);
+            }
         }
     }
 }
