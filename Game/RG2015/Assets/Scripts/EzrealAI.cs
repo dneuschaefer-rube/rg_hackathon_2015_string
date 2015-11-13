@@ -101,6 +101,7 @@ public class EzrealAI : MonoBehaviour
         m_CurrentState = State.SHOOTING;
         PlayAnimation("EzrealQ", true);
 
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
         Bounds t_Floor = m_Floors[Random.Range(0, m_Floors.Length)].GetComponent<BoxCollider>().bounds;
 
