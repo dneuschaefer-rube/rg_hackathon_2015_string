@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class XerathAI : Aimbot
+public class XerathAI : MonoBehaviour
 {
     //Reuse of A lot of Ezreal
     public GameObject m_XerathEPrefab = null;
