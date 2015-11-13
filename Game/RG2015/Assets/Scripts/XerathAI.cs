@@ -11,6 +11,8 @@ public class XerathAI : MonoBehaviour {
     public float m_ECastChance = 20.0f;
     public float m_RunningChance = 40.0f;
     public float m_IdleChance = 40.0f;
+    public float leftBoundary = -15.0f;
+    public float rightBoundary = 15.0f;
 
     public float m_MovementSpeed = 5f;
 
@@ -120,7 +122,7 @@ public class XerathAI : MonoBehaviour {
         PlayAnimation("XerathRun");
 
         m_Destination = transform.position;
-        m_Destination.x = m_Origin.x + Random.Range(-10.0f, 10.0f);
+        m_Destination.x = m_Origin.x + Random.Range(leftBoundary, rightBoundary);
     }
 
     void Idle()

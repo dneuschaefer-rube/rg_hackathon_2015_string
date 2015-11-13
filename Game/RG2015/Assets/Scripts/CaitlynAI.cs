@@ -12,6 +12,8 @@ public class CaitlynAI : MonoBehaviour
     public float m_TrapPlacingChance = 20.0f;
     public float m_RunningChance = 40.0f;
     public float m_IdleChance = 40.0f;
+    public float leftBoundary = -15.0f;
+    public float rightBoundary = 15.0f;
 
     public float m_MovementSpeed = 5f;
     public uint m_MaxTraps = 15;
@@ -135,7 +137,7 @@ public class CaitlynAI : MonoBehaviour
         PlayAnimation("CaitlynRun", false);
 
         m_Destination = transform.position;
-        m_Destination.x = m_Origin.x + Random.Range(-10.0f, 10.0f);
+        m_Destination.x = m_Origin.x + Random.Range(leftBoundary, rightBoundary);
     }
 
     void Idle()

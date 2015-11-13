@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public Boolean GameOver = false;
     private Boolean EOGAnimationScheduled, EOGAnimationRunning = false;
     private float EOGStartTime;
-    private String name;
+    private String name = "player";
     //private Global global;
 
     // Use this for initialization
@@ -308,6 +308,8 @@ public class Player : MonoBehaviour
         CurrentCooldowns[GetSpellIndex(spell)] = CooldownTimes[GetSpellIndex(spell)];
         GameObject.Find(spell + "_CooldownGray").GetComponent<Image>().enabled = true;
         GameObject.Find(spell + "_CooldownTimer").GetComponent<Text>().text = CooldownTimes[GetSpellIndex(spell)].ToString("0.0");
+        if (spell == "R")
+            ChangeHealth(50);
 
         PlayAnimation(m_Character + spell, true, false);
     }

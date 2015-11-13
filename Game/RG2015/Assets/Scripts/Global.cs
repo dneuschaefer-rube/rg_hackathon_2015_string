@@ -23,7 +23,7 @@ public class Global : MonoBehaviour
             return;
 
         GameTime += Time.deltaTime;
-		Single Score = ((Single)Math.Round (GameTime, 0)) * 500;
+		Single Score = ((Single)Math.Round (GameTime, 0)) * 1000;
 		GameObject.Find ("TimerHudText").GetComponent<Text> ().text = Score.ToString();
 	}
 
