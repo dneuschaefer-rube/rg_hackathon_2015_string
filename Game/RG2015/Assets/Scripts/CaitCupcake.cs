@@ -4,7 +4,7 @@ using System.Collections;
 public class CaitCupcake : MonoBehaviour {
 
     bool m_TrapTriggered = false;
-    public float cupcakeArmTime = 0.25f
+    public float cupcakeArmTime = 0.25f;
     public float stunTime = 0.5f;
     bool armed = false;
 	// Use this for initialization
