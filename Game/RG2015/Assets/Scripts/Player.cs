@@ -6,7 +6,7 @@ using System;
 public class Player : MonoBehaviour
 {
     public GameObject camera;
-
+    bool IM_INVINCIBLE = false;
     public float m_MovementSpeed = 5.0f;
 
     public float m_DashSpeed = 15.0f;
@@ -190,6 +190,11 @@ public class Player : MonoBehaviour
         if (m_Character == "Renekton" && IsCasting('R'))
             return;
 
+        if (m_Character == "Renekton" && (IsCasting('Q') || IsCasting('W')))
+            IM_INVINCIBLE = true;
+        else
+            IM_INVINCIBLE = false;
+
         if (Input.GetMouseButton(1) && CanWalk())
         {
             RaycastHit hit;
@@ -349,6 +354,9 @@ public class Player : MonoBehaviour
 
     public void ChangeHealth(Int32 value)
     {
+        if (value < 0 && IM_INVINCIBLE)
+            return;
+
         if (CurrentHealth + value < 0)
             CurrentHealth = 0;
         else if (CurrentHealth + value > MaxHealth)
