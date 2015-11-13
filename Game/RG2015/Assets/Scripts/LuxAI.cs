@@ -24,7 +24,13 @@ public class LuxAI : MonoBehaviour {
 
     void Start()
     {
+        //Pick a random Z
+        Bounds t_Floor = GameObject.FindGameObjectWithTag("Floor").GetComponent<BoxCollider>().bounds;
+        m_Origin.z = Random.Range(t_Floor.min.z, t_Floor.max.z);
+        m_ShootPosition.z = m_Origin.z;
+        m_Destination.z = m_Origin.z;
         this.transform.position = m_Origin;
+
     }
 
     void Update()
