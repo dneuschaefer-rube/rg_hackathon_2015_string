@@ -26,9 +26,10 @@ public class Player : MonoBehaviour
     private bool m_MovementImpaired = false;
     private String m_AnimationPlaying;
 
-
 	public Single[] CooldownTimes;
 	private Single[] CurrentCooldowns = new Single[4];
+    public Int32 MaxHealth;
+    private Int32 CurrentHealth;
 
     // Use this for initialization
     void Start ()
@@ -48,11 +49,13 @@ public class Player : MonoBehaviour
 		{
 			case "Renekton":
                 CooldownTimes = new Single[] { 3.0f, 3.0f, 3.0f, 18.0f };
+                MaxHealth = 500;
+                CurrentHealth = MaxHealth;
 
                 if (CooldownTimes[3] < m_UltDurationSeconds)
                     Debug.LogError("The cooldown for Renekton's ult is lower than Renekton's ult duration.");
                 break;
-        }
+		}
     }
 
     // Update is called once per frame
@@ -71,7 +74,9 @@ public class Player : MonoBehaviour
         if (m_AnimationBlocking)
             m_AnimationBlocking = GetComponent<Animation>().IsPlaying(m_AnimationPlaying);
 
-		for (int i = 0; i < CurrentCooldowns.Length; i++) 
+        GameObject.Find("HealthbarText").GetComponent<Text>().text = CurrentHealth.ToString() + "/" + MaxHealth.ToString();
+
+        for (int i = 0; i < CurrentCooldowns.Length; i++) 
 			if (CurrentCooldowns [i] > 0)
 			{
 				CurrentCooldowns [i] = Math.Max (CurrentCooldowns [i] - Time.deltaTime, 0);
